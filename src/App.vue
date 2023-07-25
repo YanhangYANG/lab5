@@ -2,20 +2,21 @@
 import { RouterLink, RouterView } from 'vue-router'
 import { useMessageStore } from './stores/message';
 import { storeToRefs } from 'pinia';
+import './assets/style.css';
 const store = useMessageStore();
 const { message } = storeToRefs(store);
 </script>
 
 <template>
   <header class="max-h-screen leading-normal">
-    <div id="flashMessage" v-if="message">
-     <h4>{{ message }}</h4>
+    <div id="flashMessage" v-if="message" class="animate-yellowfade">
+      <h4>{{ message }}</h4>
     </div>
-    <nav>
-      <RouterLink :to="{ name: 'EventList' }">Home</RouterLink> | 
-      <RouterLink :to="{ name: 'about' }">About</RouterLink> |
-      <RouterLink :to="{ name: 'Menu' }">Menu</RouterLink> |
-      <RouterLink :to="{ name: 'Student' }">Student</RouterLink>
+    <nav class="p-8">
+      <RouterLink :to="{ name: 'EventList' }" class="font-bold text-gray-700 hover:text-green-600">Home</RouterLink> | 
+      <RouterLink :to="{ name: 'about' }" class="font-bold text-gray-700 hover:text-green-600">About</RouterLink> |
+      <RouterLink :to="{ name: 'Menu' }" class="font-bold text-gray-700 hover:text-green-600">Menu</RouterLink> |
+      <RouterLink :to="{ name: 'Student' }" class="font-bold text-gray-700 hover:text-green-600">Student</RouterLink>
     </nav>
   </header>
 
@@ -24,46 +25,27 @@ const { message } = storeToRefs(store);
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  @apply font-sans text-center text-gray-700;
 }
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-
-
 
 .logo {
-  display: block;
-  margin: 0 auto 2rem;
+  @apply block mx-auto mb-8;
 }
+
 .page-sizes {
-  display: flex;
-  gap: 10px;
+  @apply flex gap-4;
 }
 
 .page-sizes a {
-  margin: 0 10px;
+  @apply mx-4;
 }
+
 @keyframes yellowfade {
-  fron{
+  from {
     background: yellow;
   }
-  to{
-    background: transparent
+  to {
+    background: transparent;
   }
 }
 

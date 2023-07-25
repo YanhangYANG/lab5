@@ -1,7 +1,7 @@
 <template>
-  <RouterLink class="event-link" :to="{name: 'event-detail', params:{id: event?.id}}">
-    <div class="event-class">
-      <div class="event-card">
+  <RouterLink class="text-gray-700 no-underline" :to="{name: 'event-detail', params:{id: event?.id}}">
+    <div class="my-2">
+      <div class="p-5 w-64 cursor-pointer border border-gray-700 transform hover:scale-105 hover:shadow-lg">
         <span>@{{ event?.time }} on {{ event?.date }}</span>
         <h4>{{ event?.title }}</h4>
       </div>
@@ -12,6 +12,7 @@
 <script setup lang="ts">
 import type { EventItem } from '@/type'
 import type { PropType } from 'vue'
+import '/src/assets/style.css'
 const props = defineProps({
   event: {
     type: Object as PropType<EventItem>,
@@ -21,20 +22,7 @@ const props = defineProps({
 </script>
 
 <style scoped>
-.event-card {
-  padding: 20px;
-  width: 250px;
-  cursor: pointer;
-  border: 1px solid #39495c;
-  margin-bottom: 18px;
-}
-
-.event-card:hover {
-  transform: scale(1.01);
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
-}
-.event-link{
-  color: #2c3e50;
-  text-decoration: none;
+h4 {
+  @apply text-xl;
 }
 </style>
